@@ -74,10 +74,14 @@ const ctx = canvas.getContext("2d");
 const msg = document.getElementById("mensagem");
 
 function resize(){
-  canvas.width = innerWidth; canvas.height = innerHeight;
-  ctx.fillStyle = "#eee"; ctx.fillRect(0,0,canvas.width,canvas.height);
+  canvas.width = innerWidth;
+  canvas.height = innerHeight;
+  ctx.globalCompositeOperation = "source-over"; // garante que preenchemos sobre o que tinha antes
+  ctx.fillStyle = "#eee";
+  ctx.fillRect(0,0,canvas.width,canvas.height);
 }
-resize(); addEventListener("resize", resize);
+resize();
+addEventListener("resize", resize);
 
 let ativo=false, liberado=false;
 
@@ -86,6 +90,8 @@ function apagar(x,y){
   ctx.beginPath();
   ctx.arc(x,y,60,0,Math.PI*2);
   ctx.fill();
+  ctx.lineJoin = "round"; // bordas arredondadas
+  ctx.lineCap = "round";
   verificar();
 }
 
