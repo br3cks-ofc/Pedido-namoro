@@ -1,9 +1,11 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>💖 Para Você</title>
+
+<title>💍 Pedido</title>
 
 <style>
 
@@ -14,13 +16,13 @@ display:flex;
 justify-content:center;
 align-items:center;
 flex-direction:column;
-font-family:Arial;
 text-align:center;
-overflow:hidden;
+font-family:Arial;
 
-background:linear-gradient(-45deg,#ff4d6d,#ff85a2,#ff4d6d,#ff85a2);
-background-size:400% 400%;
+background:linear-gradient(270deg,#ff4d6d,#ff85a2,#7209b7);
+background-size:600% 600%;
 animation:fundo 10s ease infinite;
+color:white;
 }
 
 @keyframes fundo{
@@ -29,20 +31,23 @@ animation:fundo 10s ease infinite;
 100%{background-position:0% 50%}
 }
 
-h1{
-color:white;
-font-size:28px;
-padding:20px;
-text-shadow:0 0 15px white;
+#conteudo{
+max-width:350px;
+line-height:1.6;
 }
 
 button{
-font-size:20px;
-padding:12px 25px;
+
 margin:10px;
+padding:12px 25px;
+
+font-size:18px;
+
 border:none;
-border-radius:25px;
+border-radius:20px;
+
 cursor:pointer;
+
 }
 
 #sim{
@@ -52,6 +57,7 @@ color:white;
 
 #nao{
 background:white;
+color:black;
 }
 
 .heart{
@@ -76,70 +82,93 @@ opacity:1;
 
 <body>
 
-<h1>
+<div id="conteudo">
 
-💌 Minha namorada,
+💌 Meu amor,<br><br>
 
-Obrigado por cada conversa,  
-cada call que a gente faz  
-e cada momento juntos. 🥰  
+Obrigado por cada momento que a gente vive juntos.<br>
+Obrigado por cada call, cada conversa e cada risada. 🥰<br><br>
 
-Eu amo muito você  
-e nunca vou desistir da gente. ❤️  
+Você é muito especial pra mim  
+e eu amo muito você. ❤️<br><br>
 
-Você é muito importante pra mim.
+Eu prometo nunca desistir da gente  
+e sempre estar ao seu lado. 💕<br><br>
 
-Então eu tenho uma pergunta...
+Então eu preciso te perguntar...<br><br>
 
-💍 **Quer casar comigo um dia?**
+<b style="font-size:26px">
+💍 Quer casar comigo? 💒
+</b>
 
-</h1>
+<br><br>
 
-<div>
 <button id="sim">💖 SIM</button>
-<button id="nao">🙈 NÃO</button>
+<button id="nao">😢 NÃO</button>
+
 </div>
 
 <script>
 
-const nao=document.getElementById("nao")
+const conteudo = document.getElementById("conteudo")
 
-nao.addEventListener("mouseover",()=>{
-nao.style.position="absolute"
-nao.style.left=Math.random()*90+"vw"
-nao.style.top=Math.random()*90+"vh"
-})
+document.getElementById("sim").onclick = function(){
 
-document.getElementById("sim").onclick=()=>{
+conteudo.innerHTML = `
 
-document.body.innerHTML=`
+<h2>💖 EU TE AMO MUITO 💖</h2>
 
-<h1 style="color:white;font-size:35px;text-align:center">
+<p>
 
-💖 EU TE AMO MUITO 💖
+Você me faz muito feliz.<br><br>
 
-Obrigado por aceitar  
-você me faz muito feliz! 🥰
+Obrigado por aceitar compartilhar sua vida comigo.<br>
 
-💍✨
+Eu prometo cuidar de você  
+e sempre fazer você sorrir. 🥰<br><br>
 
-</h1>
+💍 Nosso amor é muito especial.
+
+</p>
 
 `
 
 }
 
-/* corações subindo */
+document.getElementById("nao").onclick = function(){
+
+conteudo.innerHTML = `
+
+<h2>😔 Desculpa...</h2>
+
+<p>
+
+Se eu fui rápido demais ou te coloquei em uma situação difícil.<br><br>
+
+Eu só queria mostrar o quanto você é importante pra mim.<br><br>
+
+Mesmo assim eu continuo gostando muito de você  
+e desejando o melhor pra nós. 💔
+
+</p>
+
+`
+
+}
+
+/* corações */
 
 setInterval(()=>{
 
 const h=document.createElement("div")
 
 h.className="heart"
+
 h.innerHTML="❤"
 
 h.style.left=Math.random()*100+"vw"
-h.style.fontSize=(20+Math.random()*30)+"px"
+
+h.style.fontSize=(20+Math.random()*25)+"px"
 
 document.body.appendChild(h)
 
