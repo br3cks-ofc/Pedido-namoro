@@ -2,145 +2,151 @@
 <html lang="pt-br">
 <head>
 <meta charset="UTF-8">
-<title>💖 Pedido de Namoro</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>💖 Para Você</title>
 
 <style>
-html, body {
-  margin: 0; width: 100%; height: 100%; overflow: hidden;
-  font-family: Arial, cursive;
-}
-body {
-  background: linear-gradient(270deg, #ff4d6d, #ff85a2, #7209b7);
-  background-size: 600% 600%;
-  animation: fundo 8s ease infinite;
-}
-@keyframes fundo {
-  0%{background-position:0% 50%}
-  50%{background-position:100% 50%}
-  100%{background-position:0% 50%}
+
+body{
+margin:0;
+height:100vh;
+display:flex;
+justify-content:center;
+align-items:center;
+flex-direction:column;
+font-family:Arial;
+text-align:center;
+overflow:hidden;
+
+background:linear-gradient(-45deg,#ff4d6d,#ff85a2,#ff4d6d,#ff85a2);
+background-size:400% 400%;
+animation:fundo 10s ease infinite;
 }
 
-#mensagem {
-  position:absolute; inset:0;
-  display:flex; align-items:center; justify-content:center;
-  color:#fff; font-size:26px; text-align:center;
-  text-shadow:0 0 25px #fff;
-  opacity:0; transition:opacity .6s;
-  padding: 20px;
+@keyframes fundo{
+0%{background-position:0% 50%}
+50%{background-position:100% 50%}
+100%{background-position:0% 50%}
 }
-canvas{position:absolute; inset:0}
 
-/* corações vermelhos */
-.heart{position:absolute; color:rgba(255,0,0,.8); animation:subir 5s linear infinite}
+h1{
+color:white;
+font-size:28px;
+padding:20px;
+text-shadow:0 0 15px white;
+}
+
+button{
+font-size:20px;
+padding:12px 25px;
+margin:10px;
+border:none;
+border-radius:25px;
+cursor:pointer;
+}
+
+#sim{
+background:#ff2e63;
+color:white;
+}
+
+#nao{
+background:white;
+}
+
+.heart{
+position:absolute;
+color:red;
+animation:subir 6s linear infinite;
+}
+
 @keyframes subir{
-  from{transform:translateY(100vh) scale(.6); opacity:0}
-  to{transform:translateY(-10vh) scale(1.2); opacity:1}
+from{
+transform:translateY(100vh);
+opacity:0;
+}
+to{
+transform:translateY(-10vh);
+opacity:1;
+}
 }
 
-/* confete */
-.confete{position:absolute; width:8px; height:8px; animation:cair 2.2s linear forwards}
-@keyframes cair{
-  from{transform:translateY(0) rotate(0)}
-  to{transform:translateY(100vh) rotate(720deg)}
-}
 </style>
 </head>
 
 <body>
 
-<div id="mensagem">
-Pequena 💌,<br><br>
+<h1>
 
-Eu fiz essa carta só pra te pedir uma coisa muito importante:<br>
-<span style="font-size:28px; font-weight:bold;">Quer namorar comigo? 🥰</span><br><br>
+💌 Minha namorada,
 
-Prometo nunca desistir de você,<br>
-estar do seu lado nos dias bons e também nos dias difíceis.<br><br>
+Obrigado por cada conversa,  
+cada call que a gente faz  
+e cada momento juntos. 🥰  
 
-Quero que saiba que você pode contar comigo<br>
-pra tudo, sempre. 💕<br><br>
+Eu amo muito você  
+e nunca vou desistir da gente. ❤️  
 
-Eu sinto saudades de cada mensagem sua,<br>
-de cada risada, de cada momento juntos.<br><br>
+Você é muito importante pra mim.
 
-Então… Quer ser minha namorada? 💖💖
+Então eu tenho uma pergunta...
+
+💍 **Quer casar comigo um dia?**
+
+</h1>
+
+<div>
+<button id="sim">💖 SIM</button>
+<button id="nao">🙈 NÃO</button>
 </div>
 
-<canvas id="raspa"></canvas>
-
 <script>
-const canvas = document.getElementById("raspa");
-const ctx = canvas.getContext("2d");
-const msg = document.getElementById("mensagem");
 
-function resize(){
-  canvas.width = innerWidth;
-  canvas.height = innerHeight;
-  ctx.globalCompositeOperation = "source-over"; // garante que preenchemos sobre o que tinha antes
-  ctx.fillStyle = "#eee";
-  ctx.fillRect(0,0,canvas.width,canvas.height);
-}
-resize();
-addEventListener("resize", resize);
+const nao=document.getElementById("nao")
 
-let ativo=false, liberado=false;
+nao.addEventListener("mouseover",()=>{
+nao.style.position="absolute"
+nao.style.left=Math.random()*90+"vw"
+nao.style.top=Math.random()*90+"vh"
+})
 
-function apagar(x,y){
-  ctx.globalCompositeOperation="destination-out";
-  ctx.beginPath();
-  ctx.arc(x,y,60,0,Math.PI*2);
-  ctx.fill();
-  ctx.lineJoin = "round"; // bordas arredondadas
-  ctx.lineCap = "round";
-  verificar();
-}
+document.getElementById("sim").onclick=()=>{
 
-canvas.addEventListener("touchstart",()=>ativo=true);
-canvas.addEventListener("touchend",()=>ativo=false);
-canvas.addEventListener("touchmove",e=>{
-  if(!ativo || liberado) return;
-  const t=e.touches[0]; apagar(t.clientX,t.clientY);
-});
+document.body.innerHTML=`
 
-function verificar(){
-  const img = ctx.getImageData(0,0,canvas.width,canvas.height).data;
-  let transparente=0, total=0;
-  for(let i=3;i<img.length;i+=40){
-    total++; if(img[i]===0) transparente++;
-  }
-  if(transparente/total > 0.20 && !liberado){
-    liberar();
-  }
+<h1 style="color:white;font-size:35px;text-align:center">
+
+💖 EU TE AMO MUITO 💖
+
+Obrigado por aceitar  
+você me faz muito feliz! 🥰
+
+💍✨
+
+</h1>
+
+`
+
 }
 
-function liberar(){
-  liberado=true;
-  msg.style.opacity=1;
-  canvas.style.display="none";
-  confete();
-}
+/* corações subindo */
 
-function confete(){
-  for(let i=0;i<120;i++){
-    const c=document.createElement("div");
-    c.className="confete";
-    c.style.left=Math.random()*100+"vw";
-    c.style.top="-10px";
-    c.style.background=`hsl(${Math.random()*360},100%,50%)`;
-    document.body.appendChild(c);
-    setTimeout(()=>c.remove(),3000);
-  }
-}
-
-// corações subindo
 setInterval(()=>{
-  const h=document.createElement("div");
-  h.className="heart"; h.innerHTML="❤";
-  h.style.left=Math.random()*100+"vw";
-  h.style.fontSize=(16+Math.random()*26)+"px";
-  document.body.appendChild(h);
-  setTimeout(()=>h.remove(),5000);
-},350);
+
+const h=document.createElement("div")
+
+h.className="heart"
+h.innerHTML="❤"
+
+h.style.left=Math.random()*100+"vw"
+h.style.fontSize=(20+Math.random()*30)+"px"
+
+document.body.appendChild(h)
+
+setTimeout(()=>h.remove(),6000)
+
+},400)
+
 </script>
 
 </body>
