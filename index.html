@@ -60,23 +60,6 @@ background:white;
 color:black;
 }
 
-.heart{
-position:absolute;
-color:red;
-animation:subir 6s linear infinite;
-}
-
-@keyframes subir{
-from{
-transform:translateY(100vh);
-opacity:0;
-}
-to{
-transform:translateY(-10vh);
-opacity:1;
-}
-}
-
 </style>
 </head>
 
@@ -110,71 +93,23 @@ Então eu preciso te perguntar...<br><br>
 
 <script>
 
-const conteudo = document.getElementById("conteudo")
+const numero = "49989047100" // coloque seu número aqui
 
 document.getElementById("sim").onclick = function(){
 
-conteudo.innerHTML = `
-
-<h2>💖 EU TE AMO MUITO 💖</h2>
-
-<p>
-
-Você me faz muito feliz.<br><br>
-
-Obrigado por aceitar compartilhar sua vida comigo.<br>
-
-Eu prometo cuidar de você  
-e sempre fazer você sorrir. 🥰<br><br>
-
-💍 Nosso amor é muito especial.
-
-</p>
-
-`
+window.location.href =
+"https://wa.me/"+numero+
+"?text=Eu%20aceito%20casar%20com%20você%20❤️💍"
 
 }
 
 document.getElementById("nao").onclick = function(){
 
-conteudo.innerHTML = `
-
-<h2>😔 Desculpa...</h2>
-
-<p>
-
-Se eu fui rápido demais ou te coloquei em uma situação difícil.<br><br>
-
-Eu só queria mostrar o quanto você é importante pra mim.<br><br>
-
-Mesmo assim eu continuo gostando muito de você  
-e desejando o melhor pra nós. 💔
-
-</p>
-
-`
+window.location.href =
+"https://wa.me/"+numero+
+"?text=Desculpa,%20mas%20não%20posso%20aceitar%20agora%20😔"
 
 }
-
-/* corações */
-
-setInterval(()=>{
-
-const h=document.createElement("div")
-
-h.className="heart"
-
-h.innerHTML="❤"
-
-h.style.left=Math.random()*100+"vw"
-
-h.style.fontSize=(20+Math.random()*25)+"px"
-
-document.body.appendChild(h)
-
-setTimeout(()=>h.remove(),6000)
-
-},400)
 
 </script>
 
